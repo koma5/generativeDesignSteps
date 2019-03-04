@@ -1,7 +1,7 @@
 <html>
   <head>
     <script src="./p5.min.js"></script>
-    <meta http-equiv="refresh" content="1"> 
+    <meta http-equiv="refresh" content="3"> 
 <style>
 body {
   padding: 0;
@@ -15,7 +15,7 @@ const SIDES = 6
 let PALETTE = []
 
 function setup() {
-  createCanvas(630, 630)
+  createCanvas(640, 640)
   noLoop()
   angleMode(DEGREES)
   rectMode(CENTER)
@@ -28,13 +28,15 @@ function setup() {
 
 function draw() {
   //testLines()
-  for(x = 75; x<600; x += CRYSTAL_SIZE)
+  for(x = 75; x<600; x += CRYSTAL_SIZE + 10)
   {
-    for(y = 75; y<600; y += CRYSTAL_SIZE)
+    for(y = 75; y<600; y += CRYSTAL_SIZE + 10)
     {
       push()
       translate(x,y)
-      outlineShape()
+      if (random(1) > 0.2) {
+        outlineShape()
+      }
       simpleLines()
       circles()
       pop()
