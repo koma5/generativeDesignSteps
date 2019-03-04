@@ -34,7 +34,6 @@ function draw() {
 }
 
 function circles() {
-  /* circles are comming over the design constraint outline shape =( */
   const weight = randBool() ? 1 : 3
   let numShapes = (randBool()) ? SIDES : SIDES * 2
   let angle = 360 / numShapes
@@ -42,8 +41,8 @@ function circles() {
   const numSteps = (randBool()) ? stepsOut : int(stepsOut * 1.25)
   const step = (CRYSTAL_SIZE / 2) / numSteps
   const center = floor(random(0, numSteps)) 
-  const remainingSpace = ((CRYSTAL_SIZE / 2) - (center * step)) / numSteps
-  const radius = floor(random(center, remainingSpace)) / 2
+  const remainingStepsForCircle = numSteps - center 
+  const radius = floor(random(1, remainingStepsForCircle + 1))
 
   numShapes = (center == 0) ? 0 : numShapes
   noFill()
@@ -51,11 +50,11 @@ function circles() {
   push()
     translate(width / 2, height / 2)
     for (let i = 0; i < numShapes; i++) {
-      ellipse(center * step, 0, radius * step, radius * step)
+      circle(center * step, 0, radius * step)
       rotate(angle)
     }
   pop()
-  console.log(numSteps, ';', center, radius)
+  //console.log(numSteps, ';', center, radius, remainingStepsForCircle)
 }
 
 function simpleLines() {
