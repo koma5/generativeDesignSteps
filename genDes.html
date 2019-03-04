@@ -10,12 +10,12 @@ body {
 </style>
 <script>
 
-const CRYSTAL_SIZE = 500
+const CRYSTAL_SIZE = 150
 const SIDES = 6
 let PALETTE = []
 
 function setup() {
-  createCanvas(530, 530)
+  createCanvas(630, 630)
   noLoop()
   angleMode(DEGREES)
   rectMode(CENTER)
@@ -28,9 +28,18 @@ function setup() {
 
 function draw() {
   //testLines()
-  outlineShape()
-  simpleLines()
-  circles()
+  for(x = 75; x<600; x += CRYSTAL_SIZE)
+  {
+    for(y = 75; y<600; y += CRYSTAL_SIZE)
+    {
+      push()
+      translate(x,y)
+      outlineShape()
+      simpleLines()
+      circles()
+      pop()
+    }
+  }
 }
 
 function circles() {
@@ -48,7 +57,7 @@ function circles() {
   noFill()
   stroke(getRandomFromPalette())
   push()
-    translate(width / 2, height / 2)
+    //translate(width / 2, height / 2)
     for (let i = 0; i < numShapes; i++) {
       circle(center * step, 0, radius * step)
       rotate(angle)
@@ -73,7 +82,7 @@ function simpleLines() {
   stroke(getRandomFromPalette())
   strokeWeight(weight)
   push()
-    translate(width / 2, height / 2)
+    //translate(width / 2, height / 2)
     for (let i = 0; i < numShapes; i++) {
       line(start * step, 0, stop * step, 0)
       rotate(angle)
@@ -86,7 +95,7 @@ function outlineShape() {
   const hexagonBool = randBool()
   
   push()
-    translate(width/2, height/2)
+    //translate(width/2, height/2)
     stroke(getRandomFromPalette())
     strokeWeight(weight)
     if (hexagonBool) {
@@ -106,7 +115,7 @@ function testLines() {
   noFill()
   stroke('grey')
   push()
-    translate(width / 2, height / 2)
+    //translate(width / 2, height / 2)
     ellipse(0, 0, CRYSTAL_SIZE,CRYSTAL_SIZE);
     angle = 360 / numShapes
     for (let i = 0; i < numShapes; i++) {
