@@ -8,10 +8,11 @@ function main () {
   
   var coords = []
   
-  for(var i=-10; i<=10; i+=10){
+  for(var i=-10; i<=10; i+=10){ // -10, 0, 10
       for(var j=-10; j<=10; j+=10){
           for(var k=-10; k<=10; k+=10){
               if(abs(i)+abs(j)+abs(k) != 0 && abs(i)+abs(j)+abs(k) != 30) {
+                //on every edge but not the corners and not the middle
                 coords.push([i,j,k])
               }
           }
