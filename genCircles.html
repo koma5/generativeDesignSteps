@@ -25,13 +25,23 @@ var numberOfCircles = getRandomInt(15, 22);
 var jsonCircles = [];
 
 for (var i = numberOfCircles; i > 0; i--) {
+
+	/* following grid */
 	var radiusSteps = getRandomInt(1, 3);
 	var radius = radiusSteps * stepSize;
-	/*var x = getRandomInt(radiusSteps, steps - radiusSteps) * stepSize;
-	var y = getRandomInt(radiusSteps, steps - radiusSteps) * stepSize;*/
 
+	/* circles getting cut by boundary */
 	var x = getRandomInt(0, steps) * stepSize;
 	var y = getRandomInt(0, steps) * stepSize;
+
+	/* circles completely inside boundary
+	var x = getRandomInt(radiusSteps, steps - radiusSteps) * stepSize;
+	var y = getRandomInt(radiusSteps, steps - radiusSteps) * stepSize;*/
+
+	/* not following grid
+	var radius = getRandomInt(stepSize, stepSize*5);
+	var x = getRandomInt(0, size);
+	var y = getRandomInt(0, size);*/
 
 	var color = getRandomFromPalette();
 
