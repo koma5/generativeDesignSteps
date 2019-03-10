@@ -24,15 +24,12 @@ var palette = [
 var numberOfCircles = getRandomInt(15, 22);
 var jsonCircles = [];
 
-console.log(numberOfCircles)
-
 for (var i = numberOfCircles; i > 0; i--) {
-	var radius = getRandomInt(step, step * 3);
+	var radius = getRandomInt(step, step * 5);
 	var x = getRandomInt(0, step * steps)
 	var y = getRandomInt(0, step * steps)
 
 	var color = getRandomFromPalette();
-	console.log(color)
 
 	jsonCircles.push({"x_axis" : x, "y_axis": y,  "radius": radius, "color": color})
 
