@@ -17,8 +17,11 @@ var size = 300;
 var steps = 20;
 var step = size / 20;
 
+var palette = [
+'#CF6EC5', '#45246B', '#A3E0D4', '#A6DB94'
+]
 
-var numberOfCircles = getRandomInt(5, 8);
+var numberOfCircles = getRandomInt(15, 22);
 var jsonCircles = [];
 
 console.log(numberOfCircles)
@@ -28,7 +31,10 @@ for (var i = numberOfCircles; i > 0; i--) {
 	var x = getRandomInt(0, step * steps)
 	var y = getRandomInt(0, step * steps)
 
-	jsonCircles.push({"x_axis" : x, "y_axis": y,  "radius": radius, color: "green"})
+	var color = getRandomFromPalette();
+	console.log(color)
+
+	jsonCircles.push({"x_axis" : x, "y_axis": y,  "radius": radius, "color": color})
 
 }
 
@@ -47,6 +53,7 @@ var circleAttributes = circles
 	.attr("cy", function(d) {return d.y_axis;})
 	.attr("r", function(d) {return d.radius;})
 	.style("fill", function(d) {return d.color;})
+	.style("opacity", 0.7);
 
 
 /* control lines */ 
@@ -61,6 +68,10 @@ svgContainer.append("rect")
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function getRandomFromPalette() {
+	return palette[getRandomInt(0, palette.length -1)];
 }
 </script>
 </body>
