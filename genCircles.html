@@ -14,7 +14,7 @@ body {
 
 <script>
 
-class Chart {
+class CirclesThing {
 	constructor(options = {}) {
 		Object.assign(this, {
 			size: 300,
@@ -86,13 +86,13 @@ class Chart {
 
 <script>
 
-charts = []
+circlesThings = []
 
 for(i=0; i<=5; i++) {
-	charts.push(new Chart);
+	circlesThings.push(new CirclesThing({}));
 }
 
-charts.forEach(function(c) {c.draw();});
+circlesThings.forEach(function(c) {c.draw();});
 
 
 </script>
