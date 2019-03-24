@@ -38,13 +38,13 @@ class CirclesThing {
 		for (var i = this.circleCount; i > 0; i--) {
 
 			var radiusSteps = this.getRandomInt(this.radiusStepsBoundary[0], this.radiusStepsBoundary[1]); /* bähhh =( */
-			var radius = radiusSteps * this.stepSize;
 
-			var x = this.getRandomInt(0, this.steps) * this.stepSize;
-			var y = this.getRandomInt(0, this.steps) * this.stepSize;
-
-			var color = this.getRandomFromPalette();
-			this.circlesData.push({"x" : x, "y": y,  "radius": radius, "color": color});
+			this.circlesData.push({
+				x: this.getRandomInt(0, this.steps) * this.stepSize,
+				y: this.getRandomInt(0, this.steps) * this.stepSize, 
+				radius: radiusSteps * this.stepSize,
+				color: this.getRandomFromPalette()
+			});
 
 		}
 	}
