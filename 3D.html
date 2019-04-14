@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="./three.min.js"></script>
+    <script src="./STLLoader.js"></script>
     <meta http-equiv="refresh" content="600"> 
 <style>
 body {
@@ -24,24 +25,29 @@ var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHei
 var scene = new THREE.Scene();
 
 var light = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(light)
+scene.add(light);
 
 var light1 = new THREE.PointLight(0xffffff, 0.5);
-scene.add(light1)
+scene.add(light1);
 
-var geometry = new THREE.CubeGeometry(100, 100, 100)
-var material = new THREE.MeshLambertMaterial();
-var mesh = new THREE.Mesh(geometry, material);
+var loader = new THREE.STLLoader();
+var mesh = new THREE.Object3D();
 
-mesh.position.set(0, 0, -1000);
+loader.load("./trellik_piece.stl", function(geometry) {
+    console.log(geometry);
+    var material = new THREE.MeshLambertMaterial();
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(0, 0, -30);
+    
+    scene.add(mesh);
+});
 
-scene.add(mesh);
 
 requestAnimationFrame(render);
 
 function render() {
-	mesh.rotation.x += 0.1;
-	mesh.rotation.y += 0.1;
+	mesh.rotation.x += 0.015;
+	mesh.rotation.y += 0.03;
 	renderer.render(scene, camera);
 	requestAnimationFrame(render);
 }
