@@ -8,6 +8,10 @@ body {
   padding: 0;
   margin: 10;
 }
+    svg {
+        /*filter: blur(8px);*/
+    }
+
 </style>
 </head>
 <body>
@@ -131,7 +135,7 @@ for(i=0; i<=5; i++) {
 
 circlesThings.forEach(function(c) {c.draw(); c.addToBody()});
 
-var seededCirclesThing = new CirclesThing({seed: '507f1f77bcf86cd799439011' })
+var seededCirclesThing = new CirclesThing({ seed: '507f1f77bcf86cd799439011', colorPalette:  ['#724e20', '#bba142', '#7c6a45', '#40483c']})
 seededCirclesThing.draw();
 seededCirclesThing.addToBody();
 
