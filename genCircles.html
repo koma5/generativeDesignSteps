@@ -54,11 +54,13 @@ class CirclesThing {
 
 	draw() {
 
-		this.svgContainer = d3.select("body").append("svg")
+        this.svgElement = d3.select(document.createElementNS('http://www.w3.org/2000/svg', 'svg'));
+
+		this.svgElement
 			.attr("width", this.size)
 			.attr("height", this.size);
 
-		this.circles = this.svgContainer.selectAll("circle")
+		this.circles = this.svgElement.selectAll("circle")
 			.data(this.circlesData)
 			.enter()
 			.append("circle");
@@ -73,6 +75,10 @@ class CirclesThing {
 
 	}
 
+    addToBody() {
+        document.body.appendChild(this.svgElement._groups[0][0]);
+    }
+
 
 	getRandomFromPalette() {
 		return this.colorPalette[this.getRandomInt(0, this.colorPalette.length -1)];
@@ -80,7 +86,6 @@ class CirclesThing {
 
 	getRandomInt(min, max) {
 		/* if class is seeded use built in PRNG else use javascript random number generator */
-		console.log("HA!", this.seed);
 		if (this.seed !== '') {
 			var rand = this.mulberryPrng();
 		}
@@ -124,10 +129,11 @@ for(i=0; i<=5; i++) {
 	circlesThings.push(new CirclesThing());
 }
 
-circlesThings.forEach(function(c) {c.draw();});
+circlesThings.forEach(function(c) {c.draw(); c.addToBody()});
 
 var seededCirclesThing = new CirclesThing({seed: '507f1f77bcf86cd799439011' })
 seededCirclesThing.draw();
+seededCirclesThing.addToBody();
 
 
 
