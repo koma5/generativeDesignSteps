@@ -33,7 +33,7 @@ class CirclesThing {
 		this.hashSeed = this.hashOfSeed(this.seed)();
 
 		this.stepSize = this.size / this.steps;
-		this.circleCount = this.getRandomInt(this.circleCountBoundary[0], this.circleCountBoundary[1]); /* bähhh =( */
+		this.circleCount = this.getRandomInt(...this.circleCountBoundary);
 
 		this.circlesData = []
 		this.generateCirclesData();
@@ -44,7 +44,7 @@ class CirclesThing {
 
 		for (var i = this.circleCount; i > 0; i--) {
 
-			var radiusSteps = this.getRandomInt(this.radiusStepsBoundary[0], this.radiusStepsBoundary[1]); /* bähhh =( */
+			var radiusSteps = this.getRandomInt(...this.radiusStepsBoundary);
 
 			this.circlesData.push({
 				x: this.getRandomInt(0, this.steps) * this.stepSize,
